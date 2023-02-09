@@ -1,7 +1,6 @@
 from pytube import YouTube
-from colorama import Style
 
-red = '\033[38;2;255;0;0m'
+red = '\033[38;5;9m'
 white = '\033[38;2;255;255;255m'
 
 print(f'''{red}
