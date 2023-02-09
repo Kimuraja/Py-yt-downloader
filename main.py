@@ -23,5 +23,5 @@ def Download(link):
     print("Download is completed successfully")
 
 
-link = input("Enter th Youtube video URL: ")
+link = input("Enter the Youtube video URL: ")
 Download(link)
