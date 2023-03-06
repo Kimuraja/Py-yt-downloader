@@ -1,26 +1,31 @@
 from pytube import YouTube
+from tkinter import *
 
-red = '\033[38;5;9m'
-white = '\033[38;2;255;255;255m'
+window = Tk()
+window.title("YouTube video downloader")
+window.minsize(width=500, height=300)
+window.configure(bg='#f5f3f4')
 
-print(f'''{red}
-█▄█ {white}█▀█ █░█ {red}▀█▀ {white}█░█ █▄▄ █▀▀
-{red}░█░ {white}█▄█ █▄█ {red}░█░ {white}█▄█ █▄█ ██▄
-{white}█▀▄ █▀█ █░█░█ █▄░█ █░░ █▀█ ▄▀█ █▀▄ █▀▀ █▀█
-█▄▀ █▄█ ▀▄▀▄▀ █░▀█ █▄▄ █▄█ █▀█ █▄▀ ██▄ █▀▄          
+txt = Label(text="YouTube Downloader", font=("Helvetica", 30, "bold"), bg='#f5f3f4', fg='#161a1d', padx=10, pady=20)
+txt.pack()
 
-''')
 
-def Download(link):
+def button_clicked():
+    link = input.get()
     yt_obj = YouTube(link)
     yt_obj = yt_obj.streams.get_highest_resolution()
     try:
-        print("Downloading...\n")
+        txt.config(text="Downloading...\n")
         yt_obj.download()
     except:
-        print(f"{red}An error has occurred")
-    print("Download is completed successfully")
+        txt.config(text="An error has occurred")
+    txt.config(text="Download is completed successfully")
 
 
-link = input("Enter the Youtube video URL: ")
-Download(link)
+button = Button(text="Click to download", font=("Helvetica", 12, "bold"), bg='#e5383b', fg='#f5f3f4', command=button_clicked)
+button.pack()
+
+input = Entry(width=30, fg='#161a1d')
+input.pack()
+
+mainloop()
